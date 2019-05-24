@@ -1,6 +1,6 @@
 # Chingu Meteorite Explorer
-### for Chingu Voyage 9 Prework
 
+### for Chingu Voyage 9 Prework
 
 This project was bootstrapped with React, Webpack, Babel, Prettier.
 

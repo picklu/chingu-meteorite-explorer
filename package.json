@@ -7,6 +7,8 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
+    "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,html}\"",
+    "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,8 +25,15 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.11.0",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
