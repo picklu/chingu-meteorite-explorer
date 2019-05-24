@@ -1,7 +1,11 @@
-export default (tagName = 'h3', text = 'Hello, World!') => {
-  const element = document.createElement(tagName);
+import React, { Component } from 'react';
 
-  element.innerHTML = text;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return element;
-};
+  render() {
+    return <div>{this.props.children}</div>;
+  }
+}

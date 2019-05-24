@@ -9,7 +9,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,jsx,json,md,css, scss, html}": [
+    "**/*.{js,jsx,json,md,css,scss,html}": [
       "prettier --single-quote --write",
       "git add"
     ]
@@ -18,8 +18,8 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
-    "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css, scss, html}\"",
-    "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css, scss, html}\"",
+    "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
+    "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "eslint": "^5.16.0",
@@ -50,5 +51,9 @@
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
