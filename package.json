@@ -2,13 +2,24 @@
   "name": "chingu-meteorite-explorer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,md,css, scss, html}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
-    "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,html}\"",
-    "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,html}\"",
+    "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css, scss, html}\"",
+    "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css, scss, html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +43,8 @@
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-prettier": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.11.0",
     "webpack": "^4.32.2",
