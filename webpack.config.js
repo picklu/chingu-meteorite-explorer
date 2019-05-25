@@ -8,6 +8,9 @@ module.exports = {
     publicPath: '/',
     filename: 'js/bundle.js'
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   devServer: {
     contentBase: './dist'
   },
@@ -25,10 +28,11 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
-  },
-  resolve: {
-    extensions: ['*', '.js', '.jsx']
   }
 };
