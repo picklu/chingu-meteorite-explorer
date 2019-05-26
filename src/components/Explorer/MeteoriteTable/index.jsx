@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DataCategory from './DataCategory';
-import DataRow from './DataRow';
+import DataRows from './DataRows';
 
 export default class MeteoriteTable extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class MeteoriteTable extends Component {
           <DataCategory category={this.props.category} />
         </thead>
         <tbody>
-          <DataRow
+          <DataRows
             category={this.props.category}
             meteorites={this.props.meteorites}
           />

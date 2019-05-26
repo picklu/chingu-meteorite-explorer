@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MeteoriteSearch from './MeteoriteSearch';
 import MeteoriteTable from './MeteoriteTable';
 
 export default class Explorer extends Component {
@@ -20,8 +21,13 @@ export default class Explorer extends Component {
   render() {
     return (
       <div className="explorer">
+        <MeteoriteSearch
+          filterText={this.state.filterText}
+          onFilterTextChange={this.handleFilterTextChange}
+        />
         <MeteoriteTable
           category={this.props.category}
+          filterText={this.state.filterText}
           meteorites={this.props.meteorites}
         />
       </div>
