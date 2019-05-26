@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Layout from './layout';
+import Explorer from './components/explorer';
 import '../public/scss/main.scss';
 
-const hello = <h1>Hello, World!</h1>; // for testing
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +10,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <>
-        <Layout color="hello">{hello}</Layout>
-      </>
+      <Layout>
+        <Explorer />
+      </Layout>
     );
   }
 }
