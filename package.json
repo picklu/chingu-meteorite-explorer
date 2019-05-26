@@ -16,11 +16,13 @@
   },
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production && npm run format",
+    "production:build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
     "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css,scss,html}\"",
-    "test": "jest"
+    "app:test": "jest",
+    "build": "npm-run-all format production:build",
+    "test": "npm-run-all format:check app:test"
   },
   "repository": {
     "type": "git",
@@ -50,6 +52,7 @@
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.1.7",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.11.0",
     "react-test-renderer": "^16.8.6",
