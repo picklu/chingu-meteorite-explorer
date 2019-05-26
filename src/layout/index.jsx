@@ -6,7 +6,6 @@ const Layout = props => (
   <>
     <Header />
     {props.children}
-    <p>The color prop is {props.color}</p>
     <Footer />
   </>
 );
