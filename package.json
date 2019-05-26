@@ -16,12 +16,11 @@
   },
   "scripts": {
     "dev": "webpack --mode development",
-    "production:build": "webpack --mode production",
+    "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
     "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "app:test": "jest",
-    "build": "npm-run-all format production:build",
     "test": "npm-run-all format:check app:test"
   },
   "repository": {
