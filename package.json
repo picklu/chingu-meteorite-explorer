@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && npm run format",
     "start": "webpack-dev-server --mode development",
     "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css,scss,html}\"",
