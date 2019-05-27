@@ -13,6 +13,7 @@ export default class MeteoriteTable extends Component {
           <DataRows
             category={this.props.category}
             meteorites={this.props.meteorites}
+            filterText={this.props.filterText}
           />
         </tbody>
       </table>
