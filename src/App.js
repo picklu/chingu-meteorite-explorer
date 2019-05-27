@@ -17,7 +17,6 @@ export default class App extends Component {
     axios
       .get(apiURL)
       .then(response => {
-        console.log(response);
         this.setState({
           meteorites: response.data,
           success: true
