@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  margin-bottom: 3rem;
+
+  td {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-top: 2px solid #3434586e;
+  }
+
+  thead {
+    font-weight: 600;
+    vertical-align: bottom;
+    background-color: #5d5d5f6e;
+    border-bottom: 1px solid #2b2b476e;
+  }
+
+  tbody + tbody {
+    border-top: 1px solid #3f3f696e;
+  }
+
+  & tr:nth-of-type(odd) {
+    background-color: #a3a3a56e;
+  }
+
+  tr td:not(:first-child) {
+    text-align: center;
+  }
+}
