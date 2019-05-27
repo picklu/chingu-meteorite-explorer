@@ -6,15 +6,25 @@ export default class Explorer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      inputText: '',
       filterText: ''
     };
 
+    this.handleInputTextChange = this.handleInputTextChange.bind(this);
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
   }
 
-  handleFilterTextChange(filterText) {
+  handleInputTextChange(inputText) {
     this.setState({
-      filterText: filterText
+      inputText: inputText,
+      filterText: ''
+    });
+  }
+
+  handleFilterTextChange() {
+    this.setState({
+      inputText: this.state.inputText,
+      filterText: this.state.filterText
     });
   }
 
@@ -23,6 +33,8 @@ export default class Explorer extends Component {
       <div className="explorer">
         <MeteoriteSearch
           filterText={this.state.filterText}
+          inputText={this.state.inputText}
+          onInputTextChange={this.handleInputTextChange}
           onFilterTextChange={this.handleFilterTextChange}
         />
         <MeteoriteTable

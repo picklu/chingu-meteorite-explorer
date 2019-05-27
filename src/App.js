@@ -18,7 +18,7 @@ export default class App extends Component {
       .get(apiURL)
       .then(response => {
         this.setState({
-          meteorites: response.data,
+          meteorites: response.data.slice(0, 10),
           success: true
         });
       })

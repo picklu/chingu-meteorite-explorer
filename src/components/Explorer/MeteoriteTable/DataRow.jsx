@@ -31,9 +31,7 @@ export default class DataRow extends Component {
               meteorite[el] = { longitude: 'Unknown', latitude: 'Unknown' };
             }
           } else if (el === 'mass') {
-            console.log(meteorite[el]);
             meteorite[el] = beautify(meteorite[el]);
-            console.log(meteorite[el]);
           }
 
           // Format the data
