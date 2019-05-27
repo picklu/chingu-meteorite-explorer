@@ -4,11 +4,11 @@ export default class DataRow extends Component {
   render() {
     const category = this.props.category;
     const meteorite = this.props.meteorite;
-    const row = this.props.row;
+    const rowNum = this.props.rowNum;
 
     return (
-      <tr key={`table-body-row-${row}`}>
-        {category.map((el, id) => {
+      <tr key={`table-body-row-${rowNum}`}>
+        {category.map((el, colNum) => {
           const dataText =
             el === 'year'
               ? new Date(meteorite[el]).getFullYear()
@@ -16,7 +16,9 @@ export default class DataRow extends Component {
               ? `(${meteorite[el].latitude}, ${meteorite[el].longitude})`
               : meteorite[el];
           return (
-            <td key={`table-body-row-${row}-col-${id + 1}`}>{dataText}</td>
+            <td key={`table-body-row-${rowNum}-col-${colNum + 1}`}>
+              {dataText}
+            </td>
           );
         })}
       </tr>
