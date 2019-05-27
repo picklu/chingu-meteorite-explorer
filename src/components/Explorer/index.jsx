@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MeteoriteSearch from './MeteoriteSearch';
 import MeteoriteTable from './MeteoriteTable';
+import Spinner from '../Spinner';
 
 export default class Explorer extends Component {
   constructor(props) {
@@ -29,6 +30,19 @@ export default class Explorer extends Component {
   }
 
   render() {
+    if (this.props.isLoading) {
+      return (
+        <div className="explorer">
+          <MeteoriteSearch
+            filterText={this.state.filterText}
+            inputText={this.state.inputText}
+            onInputTextChange={this.handleInputTextChange}
+            onFilterTextChange={this.handleFilterTextChange}
+          />
+          <Spinner />
+        </div>
+      );
+    }
     return (
       <div className="explorer">
         <MeteoriteSearch

@@ -20,7 +20,6 @@ export default class DataRows extends Component {
         />
       );
     });
-
     return <>{rows}</>;
   }
 }
