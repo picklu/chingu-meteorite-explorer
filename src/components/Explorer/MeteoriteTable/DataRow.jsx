@@ -9,17 +9,19 @@ export default class DataRow extends Component {
     return (
       <tr key={`table-body-row-${rowNum}`}>
         {category.map((el, colNum) => {
+          // Sanity check of the data
+          meteorite[el] =
+            meteorite[el] === undefined ? 'Unknown' : meteorite[el];
+          // Format the data
           const dataText =
             el === 'year'
               ? new Date(meteorite[el]).getFullYear()
               : el === 'geolocation'
               ? `(${meteorite[el].latitude}, ${meteorite[el].longitude})`
-              : meteorite[el] === undefined
-              ? 'Unknown'
               : meteorite[el];
           return (
             <td key={`table-body-row-${rowNum}-col-${colNum + 1}`}>
-              {dataText}
+              {dataText ? dataText : 'Unknown'}
             </td>
           );
         })}
