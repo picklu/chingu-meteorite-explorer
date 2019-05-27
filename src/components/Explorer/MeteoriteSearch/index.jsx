@@ -13,7 +13,7 @@ export default class MeteoriteSearch extends Component {
   }
 
   handleSubmit(e) {
-    e.preventdefault();
+    e.preventDefault();
     this.props.onFilterTextChange();
   }
 

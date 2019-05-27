@@ -24,7 +24,7 @@ export default class Explorer extends Component {
   handleFilterTextChange() {
     this.setState({
       inputText: this.state.inputText,
-      filterText: this.state.filterText
+      filterText: this.state.inputText
     });
   }
 
