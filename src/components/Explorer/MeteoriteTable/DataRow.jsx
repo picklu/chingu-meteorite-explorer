@@ -14,6 +14,8 @@ export default class DataRow extends Component {
               ? new Date(meteorite[el]).getFullYear()
               : el === 'geolocation'
               ? `(${meteorite[el].latitude}, ${meteorite[el].longitude})`
+              : meteorite[el] === undefined
+              ? 'Unknown'
               : meteorite[el];
           return (
             <td key={`table-body-row-${rowNum}-col-${colNum + 1}`}>
