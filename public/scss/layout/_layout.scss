@@ -1,0 +1,104 @@
+.container {
+  min-height: 100vh;
+}
+.header,
+.explorer,
+.footer {
+  color: darken($color-secondary, 10);
+  font-size: 1.6rem;
+  min-width: 300px;
+  padding: 2rem $gutter-main 2rem $gutter-main;
+
+  @include respond(tablet-land) {
+    padding: 2rem 8rem;
+  }
+
+  @include respond(tablet-port) {
+    padding: 2rem 5rem;
+  }
+
+  @include respond(phone) {
+    padding: 1rem 3rem;
+  }
+}
+
+.header h1 {
+  text-shadow: 0 0 2px $color-secondary;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.form {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+
+  &__row {
+    border-radius: 5px;
+    box-shadow: 0 1px 2px $color-black;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__group {
+    margin: 0;
+    padding: 0;
+
+    &--input {
+      flex: 1;
+    }
+  }
+
+  &__control--input {
+    border-radius: 5px 0 0 5px;
+    color: inherit;
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 1.1rem 2rem;
+    width: 100%;
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
+  &__control--btn {
+    border-bottom: 2px solid darken($color-secondary, 10);
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.error {
+  height: 100vh;
+  padding: 30vh;
+  text-align: center;
+  text-shadow: 0 2px 3px $color-black;
+
+  &__404 {
+    color: $color-red;
+  }
+
+  &__500 {
+    color: $color-orange;
+  }
+}
+
+.hint {
+  cursor: pointer;
+  color: $color-red;
+  font-size: 2rem;
+}
+
+.hide {
+  display: none;
+}
