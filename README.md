@@ -1,6 +1,9 @@
 # Chingu Meteorite Explorer
 
-### for Chingu Voyage 9 Prework
+### A full-stack responsive app for _Chingu_ prework(Chingu Voyage 9)
+
+- [Repository](https://github.com/picklu/chingu-meteorite-explorer)
+- [Website](https://chingu-meteorite-explorer.herokuapp.com)
 
 This project was bootstrapped with React, Webpack, Babel, Prettier.
 
