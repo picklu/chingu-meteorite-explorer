@@ -1,5 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  context: path.join(__dirname, 'your-app'),
+  plugins: [new CopyWebpackPlugin([{ from: 'static' }])]
+};
 
 module.exports = {
   entry: './src/index.js',
@@ -17,12 +23,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, './public/index.html'),
-      favicon: path.resolve(__dirname, './public/media/favicon.ico'),
+      template: path.resolve(__dirname, './public/static/index.html'),
       minify: {
         collapseWhitespace: true
       }
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, './public/static'),
+        to: path.resolve(__dirname, './dist/static')
+      }
+    ])
   ],
   module: {
     rules: [
