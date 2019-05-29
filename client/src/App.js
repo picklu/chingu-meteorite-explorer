@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { apiURL } from '../config.js';
+import { apiURL } from '../../config.js';
 import Layout from './layout';
 import Explorer from './components/Explorer';
 import '../public/scss/main.scss';

@@ -8,7 +8,7 @@ module.exports = {
 };
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './client/src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
@@ -23,14 +23,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, './public/static/index.html'),
+      template: path.resolve(__dirname, './client/public/static/index.html'),
       minify: {
         collapseWhitespace: true
       }
     }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './public/static'),
+        from: path.resolve(__dirname, './client/public/static'),
         to: path.resolve(__dirname, './dist/static')
       }
     ])
