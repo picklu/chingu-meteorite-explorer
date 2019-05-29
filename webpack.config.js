@@ -17,9 +17,6 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
-  devServer: {
-    contentBase: './dist'
-  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
