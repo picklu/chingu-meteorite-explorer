@@ -15,7 +15,8 @@
     ]
   },
   "scripts": {
-    "dev": "webpack --watch --mode development",
+    "dev": "webpack --mode development",
+    "dev:watch": "webpack --watch --mode development",
     "build": "webpack --mode production",
     "server": "nodemon ./server/index.js",
     "start": "npm-run-all dev server",
