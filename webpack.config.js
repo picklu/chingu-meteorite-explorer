@@ -3,11 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  context: path.join(__dirname, 'your-app'),
-  plugins: [new CopyWebpackPlugin([{ from: 'static' }])]
-};
-
-module.exports = {
   entry: './client/src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
