@@ -44,7 +44,10 @@ export default class DataRow extends Component {
                 }\u00b0)`
               : meteorite[el];
           return (
-            <td key={`table-body-row-${rowNum}-col-${colNum + 1}`}>
+            <td
+              className={`td-col-${colNum + 1}`}
+              key={`table-body-row-${rowNum}-col-${colNum + 1}`}
+            >
               {dataText ? dataText : 'Unknown'}
             </td>
           );

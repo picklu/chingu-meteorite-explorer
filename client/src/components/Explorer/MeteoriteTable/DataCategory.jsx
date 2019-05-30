@@ -7,7 +7,10 @@ export default class DataCategory extends Component {
       <tr>
         {category.map((row, id) => {
           return (
-            <td key={`table-header-col-${id + 1}`}>
+            <td
+              className={`td-col-${id + 1}`}
+              key={`table-header-col-${id + 1}`}
+            >
               {row === 'mass' ? `${row.toUpperCase()} (g)` : row.toUpperCase()}
             </td>
           );

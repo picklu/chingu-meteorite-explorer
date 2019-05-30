@@ -31,6 +31,23 @@ table {
   tr {
     transition: all 2ms;
 
+    & .td-col-3,
+    .td-col-4,
+    .td-col-6 {
+      @include respond(tablet-port) {
+        display: none;
+      }
+    }
+
+    & .td-col-3,
+    .td-col-4,
+    .td-col-5,
+    .td-col-6 {
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
     &:last-child td {
       border-top: 1px solid #3f3f696e;
     }
