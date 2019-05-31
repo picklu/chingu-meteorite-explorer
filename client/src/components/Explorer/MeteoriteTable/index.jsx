@@ -5,11 +5,11 @@ import DataRows from './DataRows';
 export default class MeteoriteTable extends Component {
   render() {
     return (
-      <table>
-        <thead>
+      <table className="table">
+        <thead className="thead">
           <DataCategory category={this.props.category} />
         </thead>
-        <tbody>
+        <tbody className="tbody">
           <DataRows
             category={this.props.category}
             meteorites={this.props.meteorites}
