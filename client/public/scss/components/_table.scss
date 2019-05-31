@@ -1,7 +1,13 @@
 table {
   width: 100%;
   margin-bottom: 3rem;
-  border-bottom: 2px solid #3434586e;
+  border-bottom: 2px solid #6f6f796e;
+
+  @include respond(phone) {
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+  }
 
   td {
     padding: 0.5rem;
