@@ -1,13 +1,11 @@
 .table {
   width: 100%;
+  table-layout: fixed;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin-bottom: 3rem;
   border-bottom: 1px solid darken($color-grey, 20);
-
-  @include respond(phone) {
-    display: block;
-    overflow: auto;
-    white-space: nowrap;
-  }
 
   td {
     padding: 0.5rem;
@@ -39,6 +37,7 @@
   }
 
   tr {
+    width: 100%;
     transition: all 2ms;
 
     & .td-col-3,
