@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import DataCategory from './DataCategory';
-import DataRows from './DataRows';
+import TableHeader from './TableHeader';
+import TableBody from './TableBody';
 
 export default class MeteoriteTable extends Component {
   render() {
+    const regx = new RegExp(this.props.filterText, 'gi');
+    const meteorites = this.props.meteorites.filter(meteorite =>
+      meteorite.name.match(regx)
+    );
+    const categories = [
+      'name',
+      'id',
+      'nametype',
+      'recclass',
+      'mass',
+      'fall',
+      'year',
+      'geolocation'
+    ];
+
     return (
       <table className="table">
-        <thead className="thead">
-          <DataCategory category={this.props.category} />
-        </thead>
-        <tbody className="tbody">
-          <DataRows
-            category={this.props.category}
-            meteorites={this.props.meteorites}
-            filterText={this.props.filterText}
-          />
-        </tbody>
+        <TableHeader categories={categories} />
+        <TableBody categories={categories} meteorites={meteorites} />
       </table>
     );
   }
