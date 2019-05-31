@@ -52,7 +52,6 @@ export default class Explorer extends Component {
           onFilterTextChange={this.handleFilterTextChange}
         />
         <MeteoriteTable
-          category={this.props.category}
           filterText={this.state.filterText}
           meteorites={this.props.meteorites}
         />

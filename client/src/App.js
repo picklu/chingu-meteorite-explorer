@@ -55,21 +55,9 @@ export default class App extends Component {
   }
 
   render() {
-    const category = [
-      'name',
-      'id',
-      'nametype',
-      'recclass',
-      'mass',
-      'fall',
-      'year',
-      'geolocation'
-    ];
-
     return (
       <Layout>
         <Explorer
-          category={category}
           meteorites={this.state.meteorites}
           success={this.state.success}
           isLoading={this.state.isLoading}
