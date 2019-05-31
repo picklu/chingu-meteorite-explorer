@@ -1,14 +1,17 @@
 .table {
   width: 100%;
-  table-layout: fixed;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   margin-bottom: 3rem;
   border-bottom: 1px solid darken($color-grey, 20);
 
+  @include respond(phone) {
+    overflow: hidden;
+    table-layout: fixed;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   td {
-    padding: 0.5rem;
+    padding: 0.25rem;
     vertical-align: top;
     border-top: 1px solid darken($color-grey, 20);
   }
