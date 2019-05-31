@@ -1,7 +1,7 @@
 .table {
   width: 100%;
   margin-bottom: 3rem;
-  border-bottom: 2px solid #6f6f796e;
+  border-bottom: 1px solid darken($color-grey, 20);
 
   @include respond(phone) {
     display: block;
@@ -12,15 +12,16 @@
   td {
     padding: 0.5rem;
     vertical-align: top;
-    border-top: 2px solid #3434586e;
+    border-top: 1px solid darken($color-grey, 20);
   }
 
   .thead {
     font-weight: 600;
     vertical-align: bottom;
-    background-color: #5d5d5f6e;
 
     td {
+      color: $color-white;
+      background-color: darken($color-secondary, 10);
       padding-top: 1rem;
       padding-bottom: 1rem;
       text-align: center;
@@ -57,12 +58,8 @@
       }
     }
 
-    &:last-child td {
-      border-top: 1px solid #3f3f696e;
-    }
-
     &:nth-of-type(odd) {
-      background-color: #a3a3a56e;
+      background-color: lighten($color-grey, 20);
     }
 
     &:hover {
