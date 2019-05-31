@@ -27,10 +27,6 @@ table {
     }
   }
 
-  tbody + tbody {
-    border-top: 1px solid #3f3f696e;
-  }
-
   tbody tr {
     & td:first-child {
       padding-left: 2rem;
