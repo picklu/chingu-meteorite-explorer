@@ -9,21 +9,21 @@ export default class Page extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    const pageLink = event.target.closest(this.props.pageLinkClass);
-    const goToPage = parseInt(pageLink.dataset.goToPage, 10);
-    this.props.handlePageChange(goToPage);
+    const goToPage = parseInt(this.props.goToPage, 10);
+    const pageType = parseInt(this.props.pageType, 10);
+    this.props.handlePageChange(goToPage, pageType);
   }
 
   render() {
+    const classNames =
+      this.props.activePage === gotToPage
+        ? `${this.props.pageListClass} active`
+        : this.props.pageListClass;
+
     return (
       <>
-        <li className={this.props.pageListClass} onClick={this.handleClick}>
-          <a
-            className={this.props.pageLinkClass}
-            href="#"
-            data-type={this.props.pageType}
-            data-value={this.props.gotToPage}
-          >
+        <li className={classNames} onClick={this.handleClick}>
+          <a className={this.props.pageLinkClass} href="#">
             {this.props.displayValue}
           </a>
         </li>
