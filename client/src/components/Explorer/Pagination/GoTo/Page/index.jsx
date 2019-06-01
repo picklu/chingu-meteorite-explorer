@@ -9,7 +9,7 @@ export default class Page extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    const pageLink = event.target.closes(this.props.pageLinkClass);
+    const pageLink = event.target.closest(this.props.pageLinkClass);
     const goToPage = parseInt(pageLink.dataset.goToPage, 10);
     this.props.handlePageChange(goToPage);
   }
