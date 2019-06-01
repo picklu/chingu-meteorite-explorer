@@ -10,16 +10,16 @@ export default class Page extends Component {
   handleClick(event) {
     event.preventDefault();
     const goToPage = parseInt(this.props.goToPage, 10);
-    const pageType = parseInt(this.props.pageType, 10);
+    const pageType = this.props.pageType;
     this.props.handlePageChange(goToPage, pageType);
   }
 
   render() {
     const classNames =
-      this.props.activePage === gotToPage
+      this.props.activePage === this.props.goToPage
         ? `${this.props.pageListClass} active`
         : this.props.pageListClass;
-
+    console.log(this.props.displayValue);
     return (
       <>
         <li className={classNames} onClick={this.handleClick}>

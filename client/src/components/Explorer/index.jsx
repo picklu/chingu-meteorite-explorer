@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MeteoriteSearch from './MeteoriteSearch';
 import MeteoriteTable from './MeteoriteTable';
+import Pagination from './Pagination';
 import Spinner from '../Spinner';
 
 export default class Explorer extends Component {
@@ -13,6 +14,7 @@ export default class Explorer extends Component {
 
     this.handleInputTextChange = this.handleInputTextChange.bind(this);
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
   }
 
   handleInputTextChange(inputText) {
@@ -29,7 +31,21 @@ export default class Explorer extends Component {
     });
   }
 
+  onPageChange(goToPage) {
+    console.log('Go to page!');
+  }
+
   render() {
+    const props = {
+      itemsCountPerPage: 20,
+      totalItemsCount: 1000,
+      pageRangeDisplayed: 5,
+      PaginationClass: 'pagination',
+      pageListClass: 'pagination__list',
+      pageLinkClass: 'pagination__list--link',
+      onPageChange: this.onPageChange
+    };
+
     if (this.props.isLoading) {
       return (
         <div className="explorer">
@@ -50,6 +66,15 @@ export default class Explorer extends Component {
           inputText={this.state.inputText}
           onInputTextChange={this.handleInputTextChange}
           onFilterTextChange={this.handleFilterTextChange}
+        />
+        <Pagination
+          itemsCountPerPage={props.itemsCountPerPage}
+          totalItemsCount={props.totalItemsCount}
+          pageRangeDisplayed={props.pageRangeDisplayed}
+          PaginationClass={props.PaginationClass}
+          pageListClass={props.pageListClass}
+          pageLinkClass={props.pageLinkClass}
+          onPageChange={this.onPageChange}
         />
         <MeteoriteTable
           filterText={this.state.filterText}

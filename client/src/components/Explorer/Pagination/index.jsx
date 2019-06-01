@@ -15,9 +15,10 @@ export default class Pagination extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
-  handlePageChange(gotToPage, pageType) {
-    this.setState({ activePage: gotToPage });
-    this.props.onPageChange(gotToPage);
+  handlePageChange(goToPage, pageType) {
+    this.setState({ activePage: goToPage });
+    this.props.onPageChange(goToPage);
+    console.log(pageType);
   }
 
   render() {
@@ -30,29 +31,36 @@ export default class Pagination extends Component {
     };
     const itemsCountPerPage = this.props.itemsCountPerPage;
     const totalItemsCount = this.props.totalItemsCount;
-    const pageRangeDisplayed = this.pageRangeDisplayed;
+    const pageRangeDisplayed = this.props.pageRangeDisplayed;
     const activePage = this.state.activePage;
     const totalNumPages = Math.ceil(totalItemsCount / itemsCountPerPage);
-    const pages = [];
+    // Create array of page numbers
+    let pages = [];
     for (let i = activePage; i <= totalNumPages; i++) {
-      pages.push[i];
+      pages.push(i);
     }
+    // Filter the page numbers according to pageRangeDisplayed
+    pages = pages.filter((page, idx) => {
+      return idx < pageRangeDisplayed;
+    });
 
     return (
       <ul className={this.props.PaginationClass}>
         <FirstPage />
         <PreviousPage />
         {pages.map((page, idx) => {
-          <Page
-            key={`page-${idx}`}
-            activePage={this.state.activePage}
-            pageType={numbered}
-            gotToPage={page}
-            displayValue={page}
-            pageListClass={this.props.pageListClass}
-            pageLinkClass={this.props.pageLinkClass}
-            handlePageChange={this.handlePageChange}
-          />;
+          return (
+            <Page
+              key={`page-${idx}`}
+              activePage={activePage}
+              pageType={pageType.numbered}
+              goToPage={page}
+              displayValue={page}
+              pageListClass={this.props.pageListClass}
+              pageLinkClass={this.props.pageLinkClass}
+              handlePageChange={this.handlePageChange}
+            />
+          );
         })}
         <NextPage />
         <LastPage />
