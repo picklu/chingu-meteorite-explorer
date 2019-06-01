@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Page from './GoTo/Page';
-import FirstPage from './GoTo/FirstPage';
-import LastPage from './GoTo/LastPage';
-import NextPage from './GoTo/NextPage';
-import PreviousPage from './GoTo/PreviousPage';
 
 export default class Pagination extends Component {
   constructor(props) {
@@ -22,7 +18,7 @@ export default class Pagination extends Component {
   }
 
   render() {
-    const pageType = {
+    const pageTypes = {
       numbered: 'numbered',
       first: 'first',
       last: 'last',
@@ -44,26 +40,47 @@ export default class Pagination extends Component {
       return idx < pageRangeDisplayed;
     });
 
+    const commonProps = {
+      activePage,
+      pageListClass: this.props.pageListClass,
+      pageLinkClass: this.props.pageLinkClass,
+      handlePageChange: this.handlePageChange
+    };
+
     return (
       <ul className={this.props.PaginationClass}>
-        <FirstPage />
-        <PreviousPage />
+        <Page pageType={pageTypes.FirstPage} goToPage={1} {...commonProps} />
+        <Page
+          pageType={pageTypes.PreviousPage}
+          goToPage={
+            this.state.activePage - 1 > 1 ? this.state.activePage - 1 : 1
+          }
+          {...commonProps}
+        />
         {pages.map((page, idx) => {
           return (
             <Page
               key={`page-${idx}`}
-              activePage={activePage}
-              pageType={pageType.numbered}
+              pageType={pageTypes.numbered}
               goToPage={page}
-              displayValue={page}
-              pageListClass={this.props.pageListClass}
-              pageLinkClass={this.props.pageLinkClass}
-              handlePageChange={this.handlePageChange}
+              {...commonProps}
             />
           );
         })}
-        <NextPage />
-        <LastPage />
+        <Page
+          pageType={pageTypes.NextPage}
+          goToPage={
+            this.state.activePage + 1 < totalItemsCount
+              ? this.state.activePage + 1
+              : totalItemsCount
+          }
+          {...commonProps}
+        />
+        <Page
+          pageType={pageTypes.LastPage}
+          goToPage={totalItemsCount}
+          {...commonProps}
+        />
       </ul>
     );
   }
