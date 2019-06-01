@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MeteoriteSearch from './MeteoriteSearch';
 import MeteoriteTable from './MeteoriteTable';
-import Spinner from './Spinner';
+import Spinner from '../Spinner';
 
 export default class Explorer extends Component {
   constructor(props) {
