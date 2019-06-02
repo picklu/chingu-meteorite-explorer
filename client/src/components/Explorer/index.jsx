@@ -9,7 +9,8 @@ export default class Explorer extends Component {
     super(props);
     this.state = {
       inputText: '',
-      filterText: ''
+      filterText: '',
+      initialRow: 0
     };
 
     this.handleInputTextChange = this.handleInputTextChange.bind(this);
@@ -32,11 +33,13 @@ export default class Explorer extends Component {
   }
 
   onPageChange(goToPage) {
-    console.log('Go to page!');
+    console.log('Before =>', this.state.initialRow, 'gotToPage =>', goToPage);
+    this.setState({ ...this.state, initialRow: (goToPage - 1) * 20 });
+    console.log('After =>', this.state.initialRow, 'gotToPage =>', goToPage);
   }
 
   render() {
-    const props = {
+    const paginationProps = {
       itemsCountPerPage: 20,
       totalItemsCount: 1000,
       pageRangeDisplayed: 5,
@@ -67,18 +70,11 @@ export default class Explorer extends Component {
           onInputTextChange={this.handleInputTextChange}
           onFilterTextChange={this.handleFilterTextChange}
         />
-        <Pagination
-          itemsCountPerPage={props.itemsCountPerPage}
-          totalItemsCount={props.totalItemsCount}
-          pageRangeDisplayed={props.pageRangeDisplayed}
-          PaginationClass={props.PaginationClass}
-          pageListClass={props.pageListClass}
-          pageLinkClass={props.pageLinkClass}
-          onPageChange={this.onPageChange}
-        />
+        <Pagination {...paginationProps} onPageChange={this.onPageChange} />
         <MeteoriteTable
           filterText={this.state.filterText}
           meteorites={this.props.meteorites}
+          initialRow={this.state.initialRow}
         />
       </div>
     );

@@ -9,9 +9,7 @@ export default class Page extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    const goToPage = this.props.goToPage;
-    const pageType = this.props.pageType;
-    this.props.handlePageChange(goToPage, pageType);
+    this.props.handlePageChange(this.props.goToPage);
   }
 
   render() {
@@ -42,7 +40,6 @@ export default class Page extends Component {
       this.props.activePage === this.props.goToPage
         ? `${this.props.pageListClass} active`
         : this.props.pageListClass;
-    console.log('displayValue =>', displayValue);
     return (
       <li className={classNames} onClick={this.handleClick}>
         <a className={this.props.pageLinkClass} href="#">

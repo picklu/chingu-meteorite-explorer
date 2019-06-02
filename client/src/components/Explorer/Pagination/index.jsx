@@ -11,10 +11,9 @@ export default class Pagination extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
 
-  handlePageChange(goToPage, pageType) {
+  handlePageChange(goToPage) {
     this.setState({ activePage: goToPage });
     this.props.onPageChange(goToPage);
-    console.log('pageType =>', pageType);
   }
 
   render() {
@@ -79,7 +78,7 @@ export default class Pagination extends Component {
         />
         <Page
           pageType={pageTypes.last}
-          goToPage={totalItemsCount}
+          goToPage={totalNumPages}
           {...commonProps}
         />
       </ul>
