@@ -14,7 +14,7 @@ export default class Pagination extends Component {
   handlePageChange(goToPage, pageType) {
     this.setState({ activePage: goToPage });
     this.props.onPageChange(goToPage);
-    console.log(pageType);
+    console.log('pageType =>', pageType);
   }
 
   render() {
@@ -41,6 +41,7 @@ export default class Pagination extends Component {
     });
 
     const commonProps = {
+      pageTypes,
       activePage,
       pageListClass: this.props.pageListClass,
       pageLinkClass: this.props.pageLinkClass,
@@ -49,9 +50,9 @@ export default class Pagination extends Component {
 
     return (
       <ul className={this.props.PaginationClass}>
-        <Page pageType={pageTypes.FirstPage} goToPage={1} {...commonProps} />
+        <Page pageType={pageTypes.first} goToPage={1} {...commonProps} />
         <Page
-          pageType={pageTypes.PreviousPage}
+          pageType={pageTypes.previous}
           goToPage={
             this.state.activePage - 1 > 1 ? this.state.activePage - 1 : 1
           }
@@ -68,7 +69,7 @@ export default class Pagination extends Component {
           );
         })}
         <Page
-          pageType={pageTypes.NextPage}
+          pageType={pageTypes.next}
           goToPage={
             this.state.activePage + 1 < totalItemsCount
               ? this.state.activePage + 1
@@ -77,7 +78,7 @@ export default class Pagination extends Component {
           {...commonProps}
         />
         <Page
-          pageType={pageTypes.LastPage}
+          pageType={pageTypes.last}
           goToPage={totalItemsCount}
           {...commonProps}
         />

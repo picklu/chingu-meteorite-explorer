@@ -15,14 +15,8 @@ export default class Page extends Component {
   }
 
   render() {
-    const pageTypes = {
-      numbered: 'numbered',
-      first: 'first',
-      last: 'last',
-      previous: 'previous',
-      next: 'next'
-    };
     const pageType = this.props.pageType;
+    const pageTypes = this.props.pageTypes;
     let displayValue;
     switch (pageType) {
       case pageTypes.numbered:
@@ -48,7 +42,7 @@ export default class Page extends Component {
       this.props.activePage === this.props.goToPage
         ? `${this.props.pageListClass} active`
         : this.props.pageListClass;
-    console.log(this.props.displayValue);
+    console.log('displayValue =>', displayValue);
     return (
       <li className={classNames} onClick={this.handleClick}>
         <a className={this.props.pageLinkClass} href="#">
