@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Page from './GoTo/Page';
+import Page from './Page';
 
 export default class Pagination extends Component {
   constructor(props) {
@@ -31,7 +31,11 @@ export default class Pagination extends Component {
     const totalNumPages = Math.ceil(totalItemsCount / itemsCountPerPage);
     // Create array of page numbers
     let pages = [];
-    for (let i = activePage; i <= totalNumPages; i++) {
+    let i =
+      totalNumPages - activePage < pageRangeDisplayed
+        ? totalNumPages - pageRangeDisplayed + 1
+        : activePage;
+    for (; i <= totalNumPages; i++) {
       pages.push(i);
     }
     // Filter the page numbers according to pageRangeDisplayed
@@ -70,9 +74,9 @@ export default class Pagination extends Component {
         <Page
           pageType={pageTypes.next}
           goToPage={
-            this.state.activePage + 1 < totalItemsCount
+            this.state.activePage + 1 < totalNumPages
               ? this.state.activePage + 1
-              : totalItemsCount
+              : totalNumPages
           }
           {...commonProps}
         />
