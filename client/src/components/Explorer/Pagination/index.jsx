@@ -6,7 +6,7 @@ export default class Pagination extends Component {
     super(props);
     this.state = {
       activePage: 1,
-      activeRnage: 0
+      activeRange: 1
     };
 
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -19,7 +19,7 @@ export default class Pagination extends Component {
   }
 
   handleRangeChange(goToRange) {
-    this.setState({ activeRnage: goToRange });
+    this.setState({ activeRange: goToRange });
   }
 
   render() {
@@ -34,13 +34,14 @@ export default class Pagination extends Component {
     const totalItemsCount = this.props.totalItemsCount;
     const pageRangeDisplayed = this.props.pageRangeDisplayed;
     const activePage = this.state.activePage;
+    const activeRange = this.state.activeRange;
     const totalNumPages = Math.ceil(totalItemsCount / itemsCountPerPage);
     // Create array of page numbers
     let pages = [];
     let i =
-      totalNumPages - activePage < pageRangeDisplayed
+      totalNumPages - activeRange < pageRangeDisplayed
         ? totalNumPages - pageRangeDisplayed + 1
-        : activePage;
+        : activeRange;
     for (; i <= totalNumPages; i++) {
       pages.push(i);
     }

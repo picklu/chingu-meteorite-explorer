@@ -9,7 +9,11 @@ export default class Page extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.handlePageChange(this.props.goToPage);
+    const goToPage = this.props.goToPage;
+    this.props.handlePageChange(goToPage);
+    if (this.props.pageType !== this.props.pageTypes.numbered) {
+      this.props.handleRangeChange(goToPage);
+    }
   }
 
   render() {
