@@ -40,10 +40,15 @@ export default class Page extends Component {
         displayValue = 'error';
         break;
     }
-    const classNames =
-      this.props.activePage === this.props.goToPage
+    let classNames =
+      this.props.activePage === this.props.goToPage &&
+      pageType === pageTypes.numbered
         ? `${this.props.pageListClass} active`
         : this.props.pageListClass;
+    classNames =
+      pageType !== pageTypes.numbered
+        ? classNames + ' pagination__btn'
+        : classNames;
     return (
       <li className={classNames} onClick={this.handleClick}>
         <a className={this.props.pageLinkClass} href="#">
