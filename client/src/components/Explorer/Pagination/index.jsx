@@ -5,15 +5,21 @@ export default class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activePage: 1
+      activePage: 1,
+      activeRnage: 0
     };
 
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleRangeChange = this.handleRangeChange.bind(this);
   }
 
   handlePageChange(goToPage) {
     this.setState({ activePage: goToPage });
     this.props.onPageChange(goToPage);
+  }
+
+  handleRangeChange(goToRange) {
+    this.setState({ activeRnage: goToRange });
   }
 
   render() {
@@ -39,7 +45,7 @@ export default class Pagination extends Component {
       pages.push(i);
     }
     // Filter the page numbers according to pageRangeDisplayed
-    pages = pages.filter((page, idx) => {
+    pages = pages.filter((_, idx) => {
       return idx < pageRangeDisplayed;
     });
 
@@ -53,12 +59,20 @@ export default class Pagination extends Component {
 
     return (
       <ul className={this.props.PaginationClass}>
-        <Page pageType={pageTypes.first} goToPage={1} {...commonProps} />
+        <Page
+          pageType={pageTypes.first}
+          goToPage={1}
+          activeRnage={this.state.activeRnage}
+          handleRangeChange={this.handleRangeChange}
+          {...commonProps}
+        />
         <Page
           pageType={pageTypes.previous}
+          activeRnage={this.state.activeRnage}
           goToPage={
             this.state.activePage - 1 > 1 ? this.state.activePage - 1 : 1
           }
+          handleRangeChange={this.handleRangeChange}
           {...commonProps}
         />
         {pages.map((page, idx) => {
@@ -73,16 +87,20 @@ export default class Pagination extends Component {
         })}
         <Page
           pageType={pageTypes.next}
+          activeRnage={this.state.activeRnage}
           goToPage={
             this.state.activePage + 1 < totalNumPages
               ? this.state.activePage + 1
               : totalNumPages
           }
+          handleRangeChange={this.handleRangeChange}
           {...commonProps}
         />
         <Page
           pageType={pageTypes.last}
+          activeRnage={this.state.activeRnage}
           goToPage={totalNumPages}
+          handleRangeChange={this.handleRangeChange}
           {...commonProps}
         />
       </ul>
