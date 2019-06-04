@@ -46,9 +46,9 @@ export default class Page extends Component {
         ? `${this.props.pageListClass} active`
         : this.props.pageListClass;
     classNames =
-      pageType !== pageTypes.numbered
-        ? classNames + ' pagination__btn'
-        : classNames;
+      pageType === pageTypes.numbered
+        ? classNames + ' pagination__numbered'
+        : classNames + ' pagination__btn';
     return (
       <li className={classNames} onClick={this.handleClick}>
         <a className={this.props.pageLinkClass} href="#">

@@ -14,16 +14,31 @@
     display: block;
     // justify-content: space-around;
     flex: 1 1 auto;
+    transition: 2ms all;
+
+    &:not(:last-child) {
+      margin-right: 2px;
+    }
 
     &:hover {
-      // some hover effect
+      box-shadow: 0 0 5px $color-white;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      box-shadow: 0 0 2px $color-white;
+      transform: translateY(0);
+    }
+  }
+
+  &__numbered {
+    &:hover {
+      background-color: lighten($color-grey, 20);
     }
   }
 
   &__btn {
     background-color: darken($color-secondary, 10);
-    border-right: 1px solid $color-white;
-    border-left: 1px solid $color-white;
     color: $color-white;
     font-weight: 700;
   }
