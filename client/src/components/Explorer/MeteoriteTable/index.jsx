@@ -22,7 +22,12 @@ export default class MeteoriteTable extends Component {
     return (
       <table className="table">
         <TableHeader categories={categories} />
-        <TableBody categories={categories} meteorites={meteorites} />
+        <TableBody
+          categories={categories}
+          meteorites={meteorites}
+          initialRow={this.props.initialRow}
+          itemsCountPerPage={this.props.itemsCountPerPage}
+        />
       </table>
     );
   }
