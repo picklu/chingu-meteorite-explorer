@@ -2,26 +2,6 @@ import React, { Component } from 'react';
 import Page from './Page';
 
 export default class Pagination extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePage: 1,
-      activeRange: 1
-    };
-
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleRangeChange = this.handleRangeChange.bind(this);
-  }
-
-  handlePageChange(goToPage) {
-    this.setState({ activePage: goToPage });
-    this.props.onPageChange(goToPage);
-  }
-
-  handleRangeChange(goToRange) {
-    this.setState({ activeRange: goToRange });
-  }
-
   render() {
     const pageTypes = {
       numbered: 'numbered',
@@ -34,8 +14,8 @@ export default class Pagination extends Component {
     const itemsCountPerPage = this.props.itemsCountPerPage;
     const totalItemsCount = this.props.totalItemsCount;
     const pageRangeDisplayed = this.props.pageRangeDisplayed;
-    const activePage = this.state.activePage;
-    const activeRange = this.state.activeRange;
+    const activePage = this.props.activePage;
+    const activeRange = this.props.activeRange;
     const totalNumPages = Math.ceil(totalItemsCount / itemsCountPerPage);
     // Create array of page numbers
     let pages = [];
@@ -60,7 +40,7 @@ export default class Pagination extends Component {
       activePage,
       pageListClass: this.props.pageListClass,
       pageLinkClass: this.props.pageLinkClass,
-      handlePageChange: this.handlePageChange
+      handlePageChange: this.props.handlePageChange
     };
 
     return (
@@ -69,16 +49,16 @@ export default class Pagination extends Component {
           pageType={pageTypes.first}
           goToPage={1}
           totalNumPages={totalNumPages}
-          handleRangeChange={this.handleRangeChange}
+          handleRangeChange={this.props.handleRangeChange}
           {...commonProps}
         />
         <Page
           pageType={pageTypes.previous}
           totalNumPages={totalNumPages}
           goToPage={
-            this.state.activePage - 1 > 1 ? this.state.activePage - 1 : 1
+            this.props.activePage - 1 > 1 ? this.props.activePage - 1 : 1
           }
-          handleRangeChange={this.handleRangeChange}
+          handleRangeChange={this.props.handleRangeChange}
           {...commonProps}
         />
         {pages.map((page, idx) => {
@@ -96,18 +76,18 @@ export default class Pagination extends Component {
           pageType={pageTypes.next}
           totalNumPages={totalNumPages}
           goToPage={
-            this.state.activePage + 1 < totalNumPages
-              ? this.state.activePage + 1
+            this.props.activePage + 1 < totalNumPages
+              ? this.props.activePage + 1
               : totalNumPages
           }
-          handleRangeChange={this.handleRangeChange}
+          handleRangeChange={this.props.handleRangeChange}
           {...commonProps}
         />
         <Page
           pageType={pageTypes.last}
           totalNumPages={totalNumPages}
           goToPage={totalNumPages}
-          handleRangeChange={this.handleRangeChange}
+          handleRangeChange={this.props.handleRangeChange}
           {...commonProps}
         />
       </ul>
