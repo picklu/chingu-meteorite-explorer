@@ -7,7 +7,7 @@
   color: darken($color-secondary, 10);
   font-size: 1.6rem;
   min-width: 300px;
-  padding: 2rem $gutter-main 2rem $gutter-main;
+  padding: 2rem $gutter-main;
 
   @include respond(tablet-land) {
     padding: 2rem 8rem;
@@ -24,17 +24,6 @@
 
 .header h1 {
   text-shadow: 0 0 2px $color-secondary;
-}
-
-.spinner {
-  width: 64px;
-  height: 64px;
-  margin: auto;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .form {
