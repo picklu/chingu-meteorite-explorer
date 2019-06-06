@@ -3,9 +3,10 @@ import TableRow from './TableRow';
 
 export default class TableBody extends Component {
   render() {
+    const meteorites = this.props.meteorites;
     return (
       <tbody className="tbody">
-        {this.props.meteorites.map((meteorite, rowNum) => {
+        {meteorites.map((meteorite, rowNum) => {
           return (
             <TableRow
               key={`data-row-${rowNum + 1}`}
