@@ -47,4 +47,10 @@
     background-color: $color-secondary;
     color: $color-white;
   }
+
+  .muted {
+    background-color: $color-grey;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

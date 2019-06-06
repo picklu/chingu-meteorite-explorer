@@ -19,36 +19,56 @@ export default class Page extends Component {
   render() {
     const pageType = this.props.pageType;
     const pageTypes = this.props.pageTypes;
+    const totalNumPages = this.props.totalNumPages;
+    let classNames = this.props.pageListClass;
     let displayValue;
     switch (pageType) {
       case pageTypes.numbered:
         displayValue = this.props.goToPage;
+        classNames += ' pagination__numbered';
+        if (this.props.activePage === this.props.goToPage) {
+          classNames += ' active';
+        }
         break;
       case pageTypes.first:
         displayValue = '<<';
+        classNames += ' pagination__btn';
+        if (this.props.activePage === this.props.goToPage) {
+          classNames += ' muted';
+        }
         break;
       case pageTypes.previous:
         displayValue = '<';
+        classNames += ' pagination__btn';
+        if (this.props.goToPage === 1 && this.props.activePage === 1) {
+          classNames += ' muted';
+        }
         break;
       case pageTypes.next:
         displayValue = '>';
+        classNames += ' pagination__btn';
+        if (
+          this.props.goToPage === totalNumPages &&
+          this.props.activePage === totalNumPages
+        ) {
+          classNames += ' muted';
+        }
         break;
       case pageTypes.last:
         displayValue = '>>';
+        classNames += ' pagination__btn';
+        if (this.props.activePage === this.props.goToPage) {
+          classNames += ' muted';
+        }
+        break;
+      case pageTypes.empty:
+        displayValue = '';
+        classNames += ' muted';
         break;
       default:
         displayValue = 'error';
         break;
     }
-    let classNames =
-      this.props.activePage === this.props.goToPage &&
-      pageType === pageTypes.numbered
-        ? `${this.props.pageListClass} active`
-        : this.props.pageListClass;
-    classNames =
-      pageType === pageTypes.numbered
-        ? classNames + ' pagination__numbered'
-        : classNames + ' pagination__btn';
     return (
       <li className={classNames} onClick={this.handleClick}>
         <a className={this.props.pageLinkClass} href="#">

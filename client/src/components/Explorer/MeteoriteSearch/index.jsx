@@ -9,7 +9,8 @@ export default class MeteoriteSearch extends Component {
   }
 
   handleInputTextChange(e) {
-    this.props.onInputTextChange(e.target.value);
+    const inputVal = e.target.value;
+    this.props.onInputTextChange(inputVal);
   }
 
   handleSubmit(e) {

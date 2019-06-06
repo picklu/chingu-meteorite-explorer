@@ -28,7 +28,8 @@ export default class Pagination extends Component {
       first: 'first',
       last: 'last',
       previous: 'previous',
-      next: 'next'
+      next: 'next',
+      empty: 'empty'
     };
     const itemsCountPerPage = this.props.itemsCountPerPage;
     const totalItemsCount = this.props.totalItemsCount;
@@ -43,7 +44,11 @@ export default class Pagination extends Component {
         ? totalNumPages - pageRangeDisplayed + 1
         : activeRange;
     for (; i <= totalNumPages; i++) {
-      pages.push(i);
+      if (i > 0) {
+        pages.push(i);
+      } else {
+        pages.push('');
+      }
     }
     // Filter the page numbers according to pageRangeDisplayed
     pages = pages.filter((_, idx) => {
@@ -63,13 +68,13 @@ export default class Pagination extends Component {
         <Page
           pageType={pageTypes.first}
           goToPage={1}
-          activeRnage={this.state.activeRnage}
+          totalNumPages={totalNumPages}
           handleRangeChange={this.handleRangeChange}
           {...commonProps}
         />
         <Page
           pageType={pageTypes.previous}
-          activeRnage={this.state.activeRnage}
+          totalNumPages={totalNumPages}
           goToPage={
             this.state.activePage - 1 > 1 ? this.state.activePage - 1 : 1
           }
@@ -80,7 +85,8 @@ export default class Pagination extends Component {
           return (
             <Page
               key={`page-${idx}`}
-              pageType={pageTypes.numbered}
+              pageType={page === '' ? pageTypes.empty : pageTypes.numbered}
+              totalNumPages={totalNumPages}
               goToPage={page}
               {...commonProps}
             />
@@ -88,7 +94,7 @@ export default class Pagination extends Component {
         })}
         <Page
           pageType={pageTypes.next}
-          activeRnage={this.state.activeRnage}
+          totalNumPages={totalNumPages}
           goToPage={
             this.state.activePage + 1 < totalNumPages
               ? this.state.activePage + 1
@@ -99,7 +105,7 @@ export default class Pagination extends Component {
         />
         <Page
           pageType={pageTypes.last}
-          activeRnage={this.state.activeRnage}
+          totalNumPages={totalNumPages}
           goToPage={totalNumPages}
           handleRangeChange={this.handleRangeChange}
           {...commonProps}

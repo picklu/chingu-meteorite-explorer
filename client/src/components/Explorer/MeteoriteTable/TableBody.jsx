@@ -3,9 +3,7 @@ import TableRow from './TableRow';
 
 export default class TableBody extends Component {
   render() {
-    const initialRow = this.props.initialRow;
-    const finalRow = initialRow + this.props.itemsCountPerPage;
-    const meteorites = this.props.meteorites.slice(initialRow, finalRow);
+    const meteorites = this.props.meteorites;
     return (
       <tbody className="tbody">
         {meteorites.map((meteorite, rowNum) => {

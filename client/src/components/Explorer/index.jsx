@@ -20,15 +20,24 @@ export default class Explorer extends Component {
   }
 
   handleInputTextChange(inputText) {
-    this.setState({
-      inputText: inputText
-    });
+    if (this.state.inputText !== '' && inputText === '') {
+      this.setState({
+        inputText: '',
+        filterText: '',
+        initialRow: 0
+      });
+    } else {
+      this.setState({
+        inputText: inputText
+      });
+    }
   }
 
   handleFilterTextChange() {
     this.setState({
       inputText: this.state.inputText,
-      filterText: this.state.inputText
+      filterText: this.state.inputText,
+      initialRow: 0
     });
   }
 
@@ -41,7 +50,24 @@ export default class Explorer extends Component {
   render() {
     const itemsCountPerPage = 20;
     const pageRangeDisplayed = 5;
-    const totalItemsCount = this.props.meteorites.length;
+    const initialRow = this.state.initialRow;
+    const finalRow = initialRow + itemsCountPerPage;
+    const filterText = this.state.filterText || '.*';
+    const regx = new RegExp(filterText, 'gi');
+    const meteorites = this.props.meteorites.filter(meteorite =>
+      meteorite.name.match(regx)
+    );
+    const displayMeteorites = meteorites.slice(initialRow, finalRow);
+    const categories = [
+      'name',
+      'id',
+      'nametype',
+      'recclass',
+      'mass',
+      'fall',
+      'year',
+      'geolocation'
+    ];
 
     if (this.props.isLoading) {
       return (
@@ -65,14 +91,15 @@ export default class Explorer extends Component {
           onFilterTextChange={this.handleFilterTextChange}
         />
         <MeteoriteTable
+          categories={categories}
           filterText={this.state.filterText}
-          meteorites={this.props.meteorites}
+          meteorites={displayMeteorites}
           initialRow={this.state.initialRow}
           itemsCountPerPage={itemsCountPerPage}
         />
         <Pagination
           itemsCountPerPage={itemsCountPerPage}
-          totalItemsCount={totalItemsCount}
+          totalItemsCount={meteorites.length}
           pageRangeDisplayed={pageRangeDisplayed}
           PaginationClass="pagination"
           pageListClass="pagination__list"
