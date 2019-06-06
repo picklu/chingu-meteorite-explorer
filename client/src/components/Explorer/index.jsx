@@ -10,11 +10,15 @@ export default class Explorer extends Component {
     this.state = {
       inputText: '',
       filterText: '',
+      activePage: 1,
+      activeRange: 1,
       initialRow: 0
     };
 
     this.handleInputTextChange = this.handleInputTextChange.bind(this);
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleRangeChange = this.handleRangeChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     window.state = this.state;
   }
@@ -24,6 +28,8 @@ export default class Explorer extends Component {
       this.setState({
         inputText: '',
         filterText: '',
+        activePage: 1,
+        activeRange: 1,
         initialRow: 0
       });
     } else {
@@ -37,8 +43,19 @@ export default class Explorer extends Component {
     this.setState({
       inputText: this.state.inputText,
       filterText: this.state.inputText,
+      activePage: 1,
+      activeRange: 1,
       initialRow: 0
     });
+  }
+
+  handlePageChange(goToPage) {
+    this.setState({ activePage: goToPage });
+    this.onPageChange(goToPage);
+  }
+
+  handleRangeChange(goToRange) {
+    this.setState({ activeRange: goToRange });
   }
 
   onPageChange(goToPage) {
@@ -101,10 +118,14 @@ export default class Explorer extends Component {
           itemsCountPerPage={itemsCountPerPage}
           totalItemsCount={meteorites.length}
           pageRangeDisplayed={pageRangeDisplayed}
+          activePage={this.state.activePage}
+          activeRange={this.state.activeRange}
           PaginationClass="pagination"
           pageListClass="pagination__list"
           pageLinkClass="pagination__list--link"
           onPageChange={this.onPageChange}
+          handlePageChange={this.handlePageChange}
+          handleRangeChange={this.handleRangeChange}
         />
       </div>
     );
