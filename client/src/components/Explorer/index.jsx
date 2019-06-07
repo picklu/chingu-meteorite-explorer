@@ -24,10 +24,10 @@ export default class Explorer extends Component {
   }
 
   handleInputTextChange(inputText) {
-    if (this.state.inputText !== '' && inputText === '') {
+    if (this.state.inputText.length > inputText.length) {
       this.setState({
-        inputText: '',
-        filterText: '',
+        inputText: inputText,
+        filterText: inputText,
         activePage: 1,
         activeRange: 1,
         initialRow: 0
