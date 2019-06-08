@@ -21,9 +21,9 @@
     ]
   },
   "scripts": {
-    "dev": "webpack --mode development",
-    "dev:watch": "webpack --watch --mode development",
-    "build": "webpack --mode production",
+    "dev": "webpack --mode development --config webpack.dev.js",
+    "dev:watch": "webpack --watch --mode development --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js",
     "server:watch": "nodemon ./server/index.js",
     "start": "npm-run-all --parallel dev:watch server:watch",
     "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
@@ -49,6 +49,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
