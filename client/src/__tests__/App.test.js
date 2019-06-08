@@ -7,13 +7,7 @@ import App from '../App';
 Enzyme.configure({ adapter: new Adapter() });
 
 test('App snapshot test', () => {
-  const component = renderer.create(<App children="Hello, World" />);
+  const component = renderer.create(<App />);
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
-});
-
-test('App has text "Hello, World!"', () => {
-  const component = shallow(<App children="Hello, World!" />);
-
-  expect(component.text()).toEqual('Hello, World!');
 });

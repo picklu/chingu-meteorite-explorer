@@ -16,9 +16,26 @@
   },
   "babel": {
     "presets": [
-      "@babel/preset-env",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
       "@babel/preset-react"
     ]
+  },
+  "jest": {
+    "verbose": false,
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/src/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/client/src/__mocks__/styleMock.js"
+    }
   },
   "scripts": {
     "dev": "webpack --mode development --config webpack.dev.js",
