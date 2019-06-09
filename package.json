@@ -48,7 +48,9 @@
     "start": "npm-run-all --parallel dev:watch server:watch",
     "format": "prettier --single-quote --write \"**/*.{js,jsx,json,md,css,scss,html}\"",
     "format:check": "prettier --single-quote --list-different \"**/*.{js,jsx,json,md,css,scss,html}\"",
+    "app:test": "jest --detectOpenHandles",
     "app:test": "jest",
+    "test:doh": "jest --detectOpenHandles",
     "test": "npm-run-all format:check app:test"
   },
   "repository": {
