@@ -18,13 +18,13 @@ export default class App extends Component {
     // this.handleStopLoading = this.handleStopLoading.bind(this);
   }
 
-  handleStartLoading() {
-    this.setState({
-      meteorites: this.state.meteorites,
-      success: this.state.success,
-      isLoading: true
-    });
-  }
+//   handleStartLoading() {
+//     this.setState({
+//       meteorites: this.state.meteorites,
+//       success: this.state.success,
+//       isLoading: true
+//     });
+//   }
 
   // handleStopLoading() {
   //   this.setState({
